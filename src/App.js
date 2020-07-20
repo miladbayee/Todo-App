@@ -14,6 +14,19 @@ export default class App extends Component {
     };
   }
 
+  componentDidMount() {
+    window.addEventListener("load", this.loadData);
+  }
+
+  loadData = () => {
+    const getLS = localStorage.getItem("todo");
+    if (getLS) {
+      this.setState({
+        items: JSON.parse(getLS),
+      });
+    }
+  };
+
   handelInput = (e) => {
     this.setState({
       currentItem: {
@@ -26,20 +39,22 @@ export default class App extends Component {
   addTodo = (e) => {
     e.preventDefault();
     const newItem = this.state.currentItem;
-    if (newItem.text !== "") {
-      const newitems = [...this.state.items, newItem];
-      this.setState({
-        items: newitems,
-        currentItem: {
-          text: "",
-          key: "",
-        },
-      });
-    }
+      if (newItem.text !== "") {
+        const newItems = [...this.state.items, newItem];
+        localStorage.setItem("todo", JSON.stringify(newItems));
+        this.setState({
+          items: newItems,
+          currentItem: {
+            text: "",
+            key: "",
+          },
+        });
+      }
   };
 
   handelDeleteItem = (key) => {
     const filterItem = this.state.items.filter((item) => item.key !== key);
+    localStorage.setItem('todo',JSON.stringify(filterItem));
     this.setState({
       items: filterItem,
     });
@@ -49,9 +64,10 @@ export default class App extends Component {
     const items = this.state.items;
     items.forEach((item) => {
       if (item.key === key) {
-      return  item.text = text;
+        return (item.text = text);
       }
     });
+    localStorage.setItem('todo',JSON.stringify(items))
     this.setState({
       items: items,
     });

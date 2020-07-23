@@ -73,6 +73,17 @@ export default class App extends Component {
     });
   };
 
+  deleteAllList=()=>{
+    const items=this.state.items
+    if(items.length>0){
+     const deleteItems=[]
+      this.setState({
+        items:deleteItems
+      })
+      localStorage.setItem('todo',JSON.stringify(deleteItems))
+    }
+  }
+
   render() {
     return (
       <>
@@ -85,6 +96,7 @@ export default class App extends Component {
             items={this.state.items}
             handelDeleteItem={this.handelDeleteItem}
             handelEditItem={this.handelEditItem}
+            deleteAllList={this.deleteAllList}
           />
         </div>
       </>

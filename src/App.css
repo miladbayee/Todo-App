@@ -1,115 +1,142 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-body{
-    background: rgb(23, 32, 42);
+body {
+  background: rgb(23, 32, 42);
 }
 
-.container{
-    margin: 40px auto;
-    width: 500px;
-    background: rgb(27, 38, 49);
-    min-height: 600px;
+.container {
+  margin: 40px auto;
+  width: 500px;
+  background: rgb(27, 38, 49);
+  min-height: 600px;
 }
 
-.header{
-    padding: 20px;
-    color: #fff;
-    width: 200px;
-    margin: 20px auto;
+.header {
+  padding: 20px;
+  color: #fff;
+  width: 200px;
+  margin: 20px auto;
 }
 
-#todo-form{
-    width: 400px;
-    margin: 0 auto;
-    position: relative;
+#todo-form {
+  width: 400px;
+  margin: 0 auto;
+  position: relative;
 }
 
-.input-todo{
-    width: 300px;
+.input-todo {
+  width: 300px;
+  height: 40px;
+  border: 0;
+  background: rgba(26, 82, 118, 0.9);
+  color: #fff;
+  border-radius: 7px;
+  padding: 15px;
+}
+.input-todo:focus {
+  outline: none;
+}
+
+.input-todo::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+  /* padding-left: 15px; */
+}
+
+.add-btn-todo {
+  position: absolute;
+  right: 0;
+  margin-left: 10px;
+  height: 40px;
+  width: 70px;
+  color: #fff;
+  font-size: 18px;
+  background: rgba(26, 82, 118, 0.9);
+  outline: none;
+  border: 0;
+  border-radius: 7px;
+}
+
+.add-btn-todo:hover {
+  background: rgba(52, 152, 219, 0.9);
+}
+
+.todo-list {
+  width: 400px;
+  height: 40px;
+  margin: 20px auto;
+
+  background: rgba(14, 102, 85, 0.6);
+  border-radius: 7px;
+}
+
+.todo-list:hover {
+  background: rgba(14, 102, 85, 0.9);
+}
+
+.todo-list p {
+  position: relative;
+  height: 40px;
+  line-height: 40px;
+  padding-left: 15px;
+}
+
+.todo-list p input {
+  border: none;
+  background: transparent;
+  color: #fff;
+  outline: none;
+  width: 250px;
+}
+
+.todo-list p input:focus {
+  outline: none;
+}
+
+.todo-list p span {
+  position: absolute;
+  right: 20px;
+  color: #fff;
+  font-size: 13px;
+  visibility: hidden;
+  cursor: pointer;
+}
+
+.todo-list p:hover span {
+  position: absolute;
+  right: 20px;
+  color: #fff;
+  font-size: 13px;
+  visibility: visible;
+}
+.delete-lists-btn {
+  position: relative;
+  width: 400px;
+  height: 40px;
+  margin: 20px auto;
+  border: 1px solid #fff;
+  border-radius: 7px;
+}
+.delete-lists-btn button {
+    width: 40px;
     height: 40px;
-    border: 0;
-    background: rgba(26, 82, 118,0.9);
-    color: #fff;
-    border-radius: 7px;
-    padding: 15px;
-
+  position: absolute;
+  right: 5px;
+  color:rgba(255, 69, 0,0.7);
+  font-size: 17px;
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: ease 0.4s;
+  line-height: 40px;
 }
-.input-todo:focus{
-    outline: none;
+.delete-lists-btn button:hover {
+  color: rgb(255, 0, 0);
 }
-
-.input-todo::placeholder{
-    color: rgba(255, 255, 255, 0.4);
-    /* padding-left: 15px; */
-}
-
-.add-btn-todo{
-    position: absolute;
-    right: 0;
-    margin-left: 10px;
-    height: 40px;
-    width: 70px;
-    color: #fff;
-    font-size: 18px;
-    background: rgba(26, 82, 118, .9);
-    outline: none;
-    border: 0;
-    border-radius: 7px;
-}
-
-.add-btn-todo:hover{
-    background: rgba(52, 152, 219, .9);
-}
-
-.todo-list{
-    width: 400px;
-    height: 40px;
-    margin: 20px auto;
-    
-    background: rgba(14,102,85,.6);
-    border-radius: 7px;
-}
-
-.todo-list:hover{
-    background: rgba(14,102,85,0.9);
-}
-
-.todo-list p{
-    position: relative;
-    height: 40px;
-    line-height: 40px;
-    padding-left: 15px;
-}
-
-.todo-list p input{
-    border: none;
-    background: transparent;
-    color: #fff;
-    outline: none;
-    width: 250px;
-}
-
-.todo-list p input:focus{
-    outline: none;
-}
-
-.todo-list p span{
-    position: absolute;
-    right: 20px;
-    color: #fff;
-    font-size: 13px;
-    visibility: hidden;
-    cursor: pointer;
-}
-
-.todo-list p:hover span{
-    position: absolute;
-    right: 20px;
-    color: #fff;
-    font-size: 13px;
-    visibility:visible;
+.delete-lists-btn button:focus {
+  outline: none;
 }

@@ -74,8 +74,8 @@ export default class App extends Component {
   };
 
   deleteAllList=()=>{
-    const items=localStorage.getItem('todo')
-    if(JSON.parse(items).length>0){
+    const items=this.state.items
+    if(items.length>0){
      const deleteItems=[]
       this.setState({
         items:deleteItems

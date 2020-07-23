@@ -112,6 +112,10 @@ body {
   font-size: 13px;
   visibility: visible;
 }
+
+.visibility{
+visibility: hidden;
+}
 .delete-lists-btn {
   position: relative;
   width: 400px;

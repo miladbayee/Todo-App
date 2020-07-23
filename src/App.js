@@ -74,14 +74,26 @@ export default class App extends Component {
   };
 
   deleteAllList=()=>{
-    const items=this.state.items
-    if(items.length>0){
+    const items=localStorage.getItem('todo')
+    if(JSON.parse(items).length>0){
      const deleteItems=[]
       this.setState({
         items:deleteItems
       })
       localStorage.setItem('todo',JSON.stringify(deleteItems))
     }
+  }
+
+  itemListCheck=()=>{
+    let checkList=null;
+    const items=this.state.items
+    if(items.length>0){
+      checkList=false;
+    }
+    else{
+      checkList=true
+    }
+    return checkList
   }
 
   render() {
@@ -97,6 +109,7 @@ export default class App extends Component {
             handelDeleteItem={this.handelDeleteItem}
             handelEditItem={this.handelEditItem}
             deleteAllList={this.deleteAllList}
+            isItems={this.itemListCheck()}
           />
         </div>
       </>

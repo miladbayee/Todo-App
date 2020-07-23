@@ -11,7 +11,10 @@ export default function Main(props) {
                 currentItem={props.currentItem}
                 handelInput={props.handelInput}
             />
-            <DeleteBtn deleteAllList={props.deleteAllList} />
+            <DeleteBtn 
+            deleteAllList={props.deleteAllList} 
+            isItems={props.isItems}
+            />
             <List
                 items={props.items}
                 handelDeleteItem={props.handelDeleteItem}

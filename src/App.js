@@ -39,22 +39,22 @@ export default class App extends Component {
   addTodo = (e) => {
     e.preventDefault();
     const newItem = this.state.currentItem;
-      if (newItem.text !== "") {
-        const newItems = [...this.state.items, newItem];
-        localStorage.setItem("todo", JSON.stringify(newItems));
-        this.setState({
-          items: newItems,
-          currentItem: {
-            text: "",
-            key: "",
-          },
-        });
-      }
+    if (newItem.text !== "") {
+      const newItems = [...this.state.items, newItem];
+      localStorage.setItem("todo", JSON.stringify(newItems));
+      this.setState({
+        items: newItems,
+        currentItem: {
+          text: "",
+          key: "",
+        },
+      });
+    }
   };
 
   handelDeleteItem = (key) => {
     const filterItem = this.state.items.filter((item) => item.key !== key);
-    localStorage.setItem('todo',JSON.stringify(filterItem));
+    localStorage.setItem("todo", JSON.stringify(filterItem));
     this.setState({
       items: filterItem,
     });
@@ -67,34 +67,45 @@ export default class App extends Component {
         return (item.text = text);
       }
     });
-    localStorage.setItem('todo',JSON.stringify(items))
+    localStorage.setItem("todo", JSON.stringify(items));
     this.setState({
       items: items,
     });
   };
 
-  deleteAllList=()=>{
-    const items=this.state.items
-    if(items.length>0){
-     const deleteItems=[]
+  deleteAllList = () => {
+    const items = this.state.items;
+    if (items.length > 0) {
+      const deleteItems = [];
       this.setState({
-        items:deleteItems
-      })
-      localStorage.setItem('todo',JSON.stringify(deleteItems))
+        items: deleteItems,
+      });
+      localStorage.setItem("todo", JSON.stringify(deleteItems));
     }
-  }
+  };
 
-  itemListCheck=()=>{
-    let checkList=null;
-    const items=this.state.items
-    if(items.length>0){
-      checkList=false;
+  searchTodo = (text) => {
+    if(text===''){
+      const newItems=localStorage.getItem('todo')
+      this.setState({
+        items:JSON.parse(newItems)
+      })
     }
     else{
-      checkList=true
+      const filterTodo=this.state.items.filter(todo=>todo.text.includes(text))
+      this.setState({
+        items:filterTodo
+      })    
     }
-    return checkList
-  }
+  };
+
+  itemListCheck = () => {
+    const items = JSON.parse(localStorage.getItem('todo'));
+    if (items.length > 0) {
+      return false;
+    }
+    return true;
+  };
 
   render() {
     return (
@@ -110,6 +121,7 @@ export default class App extends Component {
             handelEditItem={this.handelEditItem}
             deleteAllList={this.deleteAllList}
             isItems={this.itemListCheck()}
+            searchTodo={this.searchTodo}
           />
         </div>
       </>

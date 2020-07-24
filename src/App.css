@@ -43,7 +43,6 @@ body {
 
 .input-todo::placeholder {
   color: rgba(255, 255, 255, 0.4);
-  /* padding-left: 15px; */
 }
 
 .add-btn-todo {
@@ -68,13 +67,14 @@ body {
   width: 400px;
   height: 40px;
   margin: 20px auto;
-
   background: rgba(14, 102, 85, 0.6);
   border-radius: 7px;
+  transition: ease 0.3s;
 }
 
 .todo-list:hover {
   background: rgba(14, 102, 85, 0.9);
+  transform: scale(1.02);
 }
 
 .todo-list p {
@@ -111,26 +111,62 @@ body {
   color: #fff;
   font-size: 13px;
   visibility: visible;
+  transition: ease 0.3s;
 }
 
-.visibility{
-visibility: hidden;
-
+.todo-list p:hover span:hover {
+  transform: scale(1.5);
+  color: red;
 }
-.delete-lists-btn {
+
+.search-box {
   position: relative;
   width: 400px;
   height: 40px;
   margin: 20px auto;
+  
+}
+
+.search-input {
+  position: absolute;
+  left: 0;
+  width: 330px;
+  height: 40px;
+  line-height: 40px;
+  border: 1px solid #fff;
+  border-radius: 7px;
+}
+
+.search-input input{
+  width: 330px;
+  height: 40px;
+  line-height: 40px;
+  color: #fff;
+  background: transparent;
+  border: none;
+  padding: 15px;
+}
+
+.search-input input:focus{
+  outline: none;
+}
+
+.search-input input::placeholder{
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.delete-lists-btn {
+  position: absolute;
+  right: 0;
+  width: 40px;
+  height: 40px;
   border: 1px solid #fff;
   border-radius: 7px;
 }
 .delete-lists-btn button {
-    width: 40px;
-    height: 40px;
-  position: absolute;
-  right: 5px;
-  color:rgba(255, 69, 0,0.7);
+  width: 40px;
+  height: 40px;
+  color: rgba(255, 69, 0, 0.7);
   font-size: 17px;
   background: transparent;
   border: none;
@@ -144,4 +180,8 @@ visibility: hidden;
 }
 .delete-lists-btn button:focus {
   outline: none;
+}
+
+.visibility {
+  visibility: hidden;
 }

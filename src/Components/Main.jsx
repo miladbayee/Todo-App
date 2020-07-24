@@ -1,7 +1,7 @@
 import React from 'react'
 import InputForm from './InputForm'
 import List from './List'
-import DeleteBtn from './DeleteBtn'
+import SearchBox from './SearchBox'
 
 export default function Main(props) {
     return (
@@ -11,9 +11,10 @@ export default function Main(props) {
                 currentItem={props.currentItem}
                 handelInput={props.handelInput}
             />
-            <DeleteBtn 
-            deleteAllList={props.deleteAllList} 
-            isItems={props.isItems}
+            <SearchBox
+                deleteAllList={props.deleteAllList}
+                isItems={props.isItems}
+                searchTodo={props.searchTodo}
             />
             <List
                 items={props.items}

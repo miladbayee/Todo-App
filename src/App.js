@@ -92,7 +92,7 @@ export default class App extends Component {
       })
     }
     else{
-      const filterTodo=this.state.items.filter(todo=>todo.text.includes(text))
+      const filterTodo=this.state.items.filter(todo=>(todo.text.toLowerCase()).includes(text.toLowerCase()))
       this.setState({
         items:filterTodo
       })    

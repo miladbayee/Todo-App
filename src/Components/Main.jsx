@@ -15,6 +15,7 @@ export default function Main(props) {
                 deleteAllList={props.deleteAllList}
                 isItems={props.isItems}
                 searchTodo={props.searchTodo}
+                searchValue={props.searchValue}
             />
             <List
                 items={props.items}

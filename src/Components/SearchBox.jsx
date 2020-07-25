@@ -6,6 +6,7 @@ export default function SearchBox(props) {
         <div className={`search-box ${props.isItems && 'visibility'}`}>
             <SearchInput
                 searchTodo={props.searchTodo}
+                searchValue={props.searchValue}
             />
 
             <DeleteBtn

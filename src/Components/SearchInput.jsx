@@ -6,8 +6,8 @@ export default function SearchInput(props) {
             <input
                 type="text"
                 placeholder='Search todo...'
-                value={props.value}
-                onChange={(e)=>{props.searchTodo(e.target.value)}}
+                value={props.searchValue}
+                onChange={(e)=>props.searchTodo(e.target.value)}
             />
         </div>
     )

@@ -11,6 +11,7 @@ export default class App extends Component {
         text: "",
         key: "",
       },
+      searchValue:''
     };
   }
 
@@ -33,7 +34,10 @@ export default class App extends Component {
         text: e.target.value,
         key: Math.floor(Math.random() * new Date()),
       },
+      items:JSON.parse(localStorage.getItem('todo')),
+      searchValue:''
     });
+    
   };
 
   addTodo = (e) => {
@@ -52,16 +56,20 @@ export default class App extends Component {
     }
   };
 
-  handelDeleteItem = (key) => {
-    const filterItem = this.state.items.filter((item) => item.key !== key);
-    localStorage.setItem("todo", JSON.stringify(filterItem));
-    this.setState({
-      items: filterItem,
-    });
+  handelDeleteItem = (text,key) => {
+    const getLS=JSON.parse(localStorage.getItem('todo'))
+    getLS.forEach((item,index)=>{
+      if(item.key===key){
+       getLS.splice(index,1)
+      }
+      localStorage.setItem('todo',JSON.stringify(getLS))
+    })
+    this.searchTodo(this.state.searchValue)
   };
 
   handelEditItem = (text, key) => {
     const items = this.state.items;
+    console.log(items)
     items.forEach((item) => {
       if (item.key === key) {
         return (item.text = text);
@@ -85,23 +93,26 @@ export default class App extends Component {
   };
 
   searchTodo = (text) => {
-    if(text===''){
-      const newItems=localStorage.getItem('todo')
+    const newItems = JSON.parse(localStorage.getItem("todo"));
+    if (text === "") {
       this.setState({
-        items:JSON.parse(newItems)
-      })
-    }
-    else{
-      const filterTodo=this.state.items.filter(todo=>(todo.text.toLowerCase()).includes(text.toLowerCase()))
+        items: newItems,
+        searchValue:''
+      });
+    } else {
+      const filterTodo = newItems.filter((todo) =>
+       todo.text.toLowerCase().includes(text.toLowerCase())
+      );
       this.setState({
-        items:filterTodo
-      })    
+        items: filterTodo,
+        searchValue:text
+      });
     }
   };
 
   itemListCheck = () => {
-    const items = JSON.parse(localStorage.getItem('todo'));
-    if (items.length > 0) {
+    const items = localStorage.getItem("todo");
+    if (JSON.parse(items).length > 0) {
       return false;
     }
     return true;
@@ -122,6 +133,7 @@ export default class App extends Component {
             deleteAllList={this.deleteAllList}
             isItems={this.itemListCheck()}
             searchTodo={this.searchTodo}
+            searchValue={this.state.searchValue}
           />
         </div>
       </>

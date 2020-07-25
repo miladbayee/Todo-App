@@ -15,7 +15,7 @@ export default function List(props) {
                     <span>
                         <FontAwesomeIcon
                             icon={['fa', 'trash']}
-                            onClick={() => props.handelDeleteItem(item.key)} />
+                            onClick={() => props.handelDeleteItem(item.text,item.key)} />
                     </span>
                 </p>
             </div>
